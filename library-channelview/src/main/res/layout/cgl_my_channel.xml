@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="24mm"
+    android:layout_marginBottom="17mm">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="27mm"
+        android:textColor="#333333"
+        android:text="更多板块"
+        android:textSize="30mm" />
+
+    <TextView
+        android:id="@+id/tv_sub_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="#999999"
+        android:text="点击添加板块"
+        android:textSize="30mm"
+        android:layout_marginLeft="24mm"
+        android:layout_toEndOf="@id/tv_title"
+        android:layout_toRightOf="@id/tv_title" />
+
+    <TextView
+        android:id="@+id/tv_tip_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:text="@string/channelEdit"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/tv_tip_finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:text="@string/channelEditFinish"
+        android:visibility="invisible" />
+</RelativeLayout>

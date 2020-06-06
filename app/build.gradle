@@ -27,8 +27,14 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    implementation project(':library-arouter')
     implementation project(':library-banner')
     implementation project(':library-bigimagepager')
+    implementation project(':library-channelview')
     implementation project(':library-jsbridge')
+    implementation project(':library-mpchart')
+    implementation project(':library-okhttputils')
     implementation project(':library-security')
+    implementation project(':library-webcore')
+
 }
