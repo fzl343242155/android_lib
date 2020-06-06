@@ -1,0 +1,4 @@
+<resources>
+	<string name="app_name">library</string>
+	<string name="indicators">%1$s/%2$s</string>
+</resources>

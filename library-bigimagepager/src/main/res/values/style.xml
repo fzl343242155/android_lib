@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.ImagePreview" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:background">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+
+    <style name="main_menu_animstyle">
+        <item name="android:windowEnterAnimation">@anim/photo_dialog_in_anim</item>
+        <item name="android:windowExitAnimation">@anim/photo_dialog_out_anim</item>
+    </style>
+
+    <!--自定义Dialog弹出的全屏样式,不要继承系统Dialog的样式会出现抖动的情况-->
+    <style name="dialog_full" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:scrollHorizontally">false</item>
+        <item name="android:windowIsFloating">true</item>   <!--是否悬浮在界面上-->
+        <item name="android:windowIsTranslucent">true</item>   <!--是否半透明-->
+        <item name="android:windowNoTitle">false</item> <!--是否有标题-->
+        <item name="android:windowBackground">@android:color/transparent</item>  <!--窗口背景色透明-->
+        <item name="android:backgroundDimEnabled">false</item>  <!--背景是否模糊显示-->
+    </style>
+</resources>

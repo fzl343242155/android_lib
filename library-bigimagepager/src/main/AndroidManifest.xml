@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.chichapaofan.library">
+
+    <application >
+        <activity
+            android:name=".view.ImagePreviewActivity"
+            android:permission="com.sgcc.pmos.mobileapp.permission.NORMAL"
+            android:exported="false"
+            android:theme="@style/Theme.ImagePreview" />
+    </application>
+</manifest>

@@ -1,0 +1,6 @@
+include ':app'
+rootProject.name='transactionlib_android'
+include ':library-banner'
+include ':library-bigimagepager'
+include ':library-jsbridge'
+include ':library-security'

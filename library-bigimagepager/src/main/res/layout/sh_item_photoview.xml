@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	>
+
+	<com.chichapaofan.library.view.helper.FingerDragHelper
+		android:id="@+id/fingerDragHelper"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:gravity="center"
+		android:orientation="vertical"
+		>
+
+		<com.chichapaofan.library.view.helper.SubsamplingScaleImageViewDragClose
+			android:id="@+id/photo_view"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			/>
+
+		<com.chichapaofan.library.view.photoview.PhotoView
+			android:id="@+id/gif_view"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:scaleType="centerInside"
+			android:visibility="gone"
+			/>
+	</com.chichapaofan.library.view.helper.FingerDragHelper>
+
+	<ProgressBar
+		android:id="@+id/progress_view"
+		android:layout_width="60dp"
+		android:layout_height="60dp"
+		android:layout_gravity="center"
+		/>
+</FrameLayout>
