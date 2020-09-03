@@ -123,12 +123,6 @@ public class SM2Factory {
 				ECPublicKeyParameters ecpub = (ECPublicKeyParameters) keypair.getPublic();
 				k = ecpriv.getD();
 				kp = ecpub.getQ();
-				//System.out.println("BigInteger:" + k + "\nECPoint:" + kp);
-
-				//System.out.println("计算曲线点X1: "+ kp.getXCoord().toBigInteger().toString(16));
-				//System.out.println("计算曲线点Y1: "+ kp.getYCoord().toBigInteger().toString(16));
-				//System.out.println("");
-				// r
 				r = e.add(kp.getXCoord().toBigInteger());
 				r = r.mod(this.n);
 			} while (r.equals(BigInteger.ZERO) || r.add(k).equals(this.n)||r.toString(16).length()!=64);
@@ -162,14 +156,8 @@ public class SM2Factory {
 			return;
 		} else {
 			ECPoint x1y1 = ecc_point_g.multiply(sm2Result.s);
-			//System.out.println("计算曲线点X0: "+ x1y1.normalize().getXCoord().toBigInteger().toString(16));
-			//System.out.println("计算曲线点Y0: "+ x1y1.normalize().getYCoord().toBigInteger().toString(16));
-			//System.out.println("");
 
 			x1y1 = x1y1.add(userKey.multiply(t));
-			//System.out.println("计算曲线点X1: "+ x1y1.normalize().getXCoord().toBigInteger().toString(16));
-			//System.out.println("计算曲线点Y1: "+ x1y1.normalize().getYCoord().toBigInteger().toString(16));
-			//System.out.println("");
 			sm2Result.R = e.add(x1y1.normalize().getXCoord().toBigInteger()).mod(this.n);
 			//System.out.println("R: " + sm2Result.R.toString(16));
 			return;

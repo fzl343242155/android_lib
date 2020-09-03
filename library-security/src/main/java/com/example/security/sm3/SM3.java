@@ -96,16 +96,6 @@ public class SM3 {
             f = e;
             e = P0(tt2);
 
-		            /*System.out.print(j+" ");
-		            System.out.print(Integer.toHexString(a)+" ");
-		            System.out.print(Integer.toHexString(b)+" ");
-		            System.out.print(Integer.toHexString(c)+" ");
-		            System.out.print(Integer.toHexString(d)+" ");
-		            System.out.print(Integer.toHexString(e)+" ");
-		            System.out.print(Integer.toHexString(f)+" ");
-		            System.out.print(Integer.toHexString(g)+" ");
-		            System.out.print(Integer.toHexString(h)+" ");
-		            System.out.println("");*/
         }
 //		      System.out.println("");
 

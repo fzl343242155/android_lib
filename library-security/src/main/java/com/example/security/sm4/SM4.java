@@ -147,6 +147,7 @@ public class SM4 {
             k[(i + 4)] = (k[i] ^ sm4CalciRK(k[(i + 1)] ^ k[(i + 2)] ^ k[(i + 3)] ^ (long) CK[i]));
             SK[i] = k[(i + 4)];
         }
+        key = new byte[0];
     }
 
     private void sm4_one_round(long[] sk, byte[] input, byte[] output) {
@@ -165,38 +166,6 @@ public class SM4 {
         PUT_ULONG_BE(ulbuf[33], output, 8);
         PUT_ULONG_BE(ulbuf[32], output, 12);
     }
-    //修改了填充模式,为模式
-    /*private byte[] padding(byte[] input, int mode) {
-        if (input == null) {
-            return null;
-        }
-
-        byte[] ret = (byte[]) null;
-        if (mode == SM4_ENCRYPT) {
-            //填充:hex必须是32的整数倍填充 ,填充的是80  00 00 00
-            int p = 16 - input.length % 16;
-            String inputHex = Util.byteToHex(input)+ "80";
-            StringBuffer stringBuffer =new StringBuffer(inputHex);
-            for (int i = 0; i <p-1 ; i++) {
-                stringBuffer.append("00");
-            }
-            ret= Util.hexToByte(stringBuffer.toString());
-            //ret = new byte[input.length + p];
-            *//*System.arraycopy(input, 0, ret, 0, input.length);
-            for (int i = 0; i < p; i++) {
-                ret[input.length + i] = (byte) '�';
-            }*//*
-        } else {
-            *//*int p = input[input.length - 1];
-            ret = new byte[input.length - p];
-            System.arraycopy(input, 0, ret, 0, input.length - p);*//*
-            String inputHex =Util.byteToHex(input);
-            int i = inputHex.lastIndexOf("80");
-            String substring = inputHex.substring(0, i);
-            ret= Util.hexToByte(substring);
-        }
-        return ret;
-    }*/
     private byte[] padding(byte[] input, int mode)
     {
         if (input == null)
@@ -234,6 +203,7 @@ public class SM4 {
 
         ctx.mode = SM4_ENCRYPT;
         sm4_setkey(ctx.sk, key);
+        key = new byte[0];
     }
 
     public void sm4_setkey_dec(SM4_Context ctx, byte[] key) throws Exception {
@@ -251,6 +221,7 @@ public class SM4 {
         for (i = 0; i < 16; i++) {
             SWAP(ctx.sk, i);
         }
+        key = new byte[0];
     }
 
     public byte[] sm4_crypt_ecb(SM4_Context ctx, byte[] input) throws Exception {

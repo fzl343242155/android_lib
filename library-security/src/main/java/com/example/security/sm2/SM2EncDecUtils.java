@@ -13,27 +13,6 @@ import java.io.IOException;
 import java.math.BigInteger;
 
 public class SM2EncDecUtils {
-    //生成随机秘钥对
-    public static SM2KeyVO generateKeyPair() {
-        SM2 sm2 = SM2.Instance();
-        AsymmetricCipherKeyPair key = null;
-        while (true) {
-            key = sm2.ecc_key_pair_generator.generateKeyPair();
-            if (((ECPrivateKeyParameters) key.getPrivate()).getD().toByteArray().length == 32) {
-                break;
-            }
-        }
-        ECPrivateKeyParameters ecpriv = (ECPrivateKeyParameters) key.getPrivate();
-        ECPublicKeyParameters ecpub = (ECPublicKeyParameters) key.getPublic();
-        BigInteger privateKey = ecpriv.getD();
-        ECPoint publicKey = ecpub.getQ();
-        SM2KeyVO sm2KeyVO = new SM2KeyVO();
-        sm2KeyVO.setPublicKey(publicKey);
-        sm2KeyVO.setPrivateKey(privateKey);
-        //System.out.println("公钥: " + Util.byteToHex(publicKey.getEncoded()));
-        //System.out.println("私钥: " + Util.byteToHex(privateKey.toByteArray()));
-        return sm2KeyVO;
-    }
 
     //数据加密
     public static String encrypt(byte[] publicKey, byte[] data) throws IOException {
@@ -56,14 +35,7 @@ public class SM2EncDecUtils {
         cipher.Encrypt(source);
         byte[] c3 = new byte[32];
         cipher.Dofinal(c3);
-
-//      System.out.println("C1 " + Util.byteToHex(c1.getEncoded()));
-//      System.out.println("C2 " + Util.byteToHex(source));
-//      System.out.println("C3 " + Util.byteToHex(c3));
-        //C1 C2 C3拼装成加密字串
-        // C1 | C2 | C3
-        //return Util.byteToHex(c1.getEncoded()) + Util.byteToHex(source) + Util.byteToHex(c3);
-        // C1 | C3 | C2
+        publicKey = new byte[0];
         return Util.byteToHex(c1.getEncoded()) + Util.byteToHex(c3) + Util.byteToHex(source);
     }
 
@@ -92,7 +64,7 @@ public class SM2EncDecUtils {
         cipher.Init_dec(userD, c1);
         cipher.Decrypt(c2);
         cipher.Dofinal(c3);
-
+        privateKey = new byte[0];
         //返回解密结果
         return c2;
     }
