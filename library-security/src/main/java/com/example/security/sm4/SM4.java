@@ -8,6 +8,7 @@ package com.example.security.sm4;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.util.Arrays;
 
 public class SM4 {
     public static final int SM4_ENCRYPT = 1;
@@ -147,7 +148,8 @@ public class SM4 {
             k[(i + 4)] = (k[i] ^ sm4CalciRK(k[(i + 1)] ^ k[(i + 2)] ^ k[(i + 3)] ^ (long) CK[i]));
             SK[i] = k[(i + 4)];
         }
-        key = new byte[0];
+        Arrays.fill(key, (byte) 0);
+        Arrays.fill(SK, 0l);
     }
 
     private void sm4_one_round(long[] sk, byte[] input, byte[] output) {
@@ -165,6 +167,7 @@ public class SM4 {
         PUT_ULONG_BE(ulbuf[34], output, 4);
         PUT_ULONG_BE(ulbuf[33], output, 8);
         PUT_ULONG_BE(ulbuf[32], output, 12);
+        Arrays.fill(sk,0l);
     }
     private byte[] padding(byte[] input, int mode)
     {
@@ -203,7 +206,7 @@ public class SM4 {
 
         ctx.mode = SM4_ENCRYPT;
         sm4_setkey(ctx.sk, key);
-        key = new byte[0];
+        Arrays.fill(key, (byte) 0);
     }
 
     public void sm4_setkey_dec(SM4_Context ctx, byte[] key) throws Exception {
@@ -221,7 +224,7 @@ public class SM4 {
         for (i = 0; i < 16; i++) {
             SWAP(ctx.sk, i);
         }
-        key = new byte[0];
+        Arrays.fill(key, (byte) 0);
     }
 
     public byte[] sm4_crypt_ecb(SM4_Context ctx, byte[] input) throws Exception {

@@ -11,6 +11,7 @@ import org.bouncycastle.math.ec.ECPoint;
 
 import java.io.IOException;
 import java.math.BigInteger;
+import java.util.Arrays;
 
 public class SM2EncDecUtils {
 
@@ -35,7 +36,7 @@ public class SM2EncDecUtils {
         cipher.Encrypt(source);
         byte[] c3 = new byte[32];
         cipher.Dofinal(c3);
-        publicKey = new byte[0];
+        Arrays.fill(publicKey, (byte) 0);
         return Util.byteToHex(c1.getEncoded()) + Util.byteToHex(c3) + Util.byteToHex(source);
     }
 
@@ -64,7 +65,7 @@ public class SM2EncDecUtils {
         cipher.Init_dec(userD, c1);
         cipher.Decrypt(c2);
         cipher.Dofinal(c3);
-        privateKey = new byte[0];
+        Arrays.fill(privateKey, (byte) 0);
         //返回解密结果
         return c2;
     }
