@@ -238,6 +238,8 @@ public class BridgeWebView extends WebView implements WebViewJavascriptBridge {
 	@Override
 	public void setOverScrollMode(int mode) {
 		super.setOverScrollMode(mode);
+	}
+	public void autoSize(){
 		AutoSize.autoConvertDensityOfGlobal((Activity) getContext());
 	}
 }
