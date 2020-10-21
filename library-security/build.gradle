@@ -33,7 +33,7 @@ dependencies {
     implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.0'
     implementation 'junit:junit:4.12'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
-//    implementation group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.50'
+    implementation group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.50'
     implementation group: 'commons-codec', name: 'commons-codec', version: '1.9'
     implementation 'com.blankj:utilcode:1.25.9'
 }
