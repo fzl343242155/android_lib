@@ -152,15 +152,6 @@ public class ImagePreviewActivity extends Activity implements Handler.Callback, 
                 fm_center_progress_container.removeAllViews();
                 fm_center_progress_container.addView(progressParentLayout);
                 isUserCustomProgressView = true;
-
-                progressParentLayout.setOnLongClickListener(new View.OnLongClickListener() {
-                    @Override
-                    public boolean onLongClick(View view) {
-                        bt1ListView();
-                        return false;
-                    }
-                });
-
             } else {
                 // 使用默认的textView进行百分比的显示
                 isUserCustomProgressView = false;
