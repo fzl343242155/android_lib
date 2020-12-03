@@ -481,7 +481,7 @@ public class ImagePreviewActivity extends Activity implements Handler.Callback, 
     /**
      * 底部列表弹窗
      */
-    private void bt1ListView() {
+    public void bt1ListView() {
         List<String> names = new ArrayList<>();
         names.add("保存图片");
 //        names.add("查看原图");

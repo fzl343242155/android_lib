@@ -41,7 +41,7 @@ public class DownloadPictureUtil {
             @Override
             public void onLoadStarted(@Nullable Drawable placeholder) {
                 super.onLoadStarted(placeholder);
-                ToastUtil.getInstance()._short(context, "开始下载...");
+//                ToastUtil.getInstance()._short(context, "开始下载...");
                 super.onLoadStarted(placeholder);
             }
 
@@ -99,7 +99,8 @@ public class DownloadPictureUtil {
                             }
                             os.flush();
                         }
-                        ToastUtil.getInstance()._short(context, "成功保存到 ".concat(Environment.DIRECTORY_PICTURES + "/" + downloadFolderName));
+                        ToastUtil.getInstance()._short(context, "图片保存成功！");
+//                        ToastUtil.getInstance()._short(context, "成功保存到 ".concat(Environment.DIRECTORY_PICTURES + "/" + downloadFolderName));
                     } catch (IOException e) {
                         e.printStackTrace();
                         ToastUtil.getInstance()._short(context, "保存失败");
@@ -126,7 +127,8 @@ public class DownloadPictureUtil {
                     FileUtil.createFileByDeleteOldFile(path + name);
                     boolean result = FileUtil.copyFile(resource, path, name);
                     if (result) {
-                        ToastUtil.getInstance()._short(context, "成功保存到 ".concat(path));
+                        ToastUtil.getInstance()._short(context, "图片保存成功！");
+//                        ToastUtil.getInstance()._short(context, "成功保存到 ".concat(path));
                         new SingleMediaScanner(context, path.concat(name), new SingleMediaScanner.ScanListener() {
                             @Override
                             public void onScanFinish() {
