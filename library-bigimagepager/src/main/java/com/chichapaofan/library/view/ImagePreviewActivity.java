@@ -478,6 +478,27 @@ public class ImagePreviewActivity extends Activity implements Handler.Callback, 
         });
     }
 
+    /**
+     * 用来外部调用底部弹窗使用
+     */
+    public void checkButtonDialog() {
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(ImagePreviewActivity.this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                // 拒绝权限
+                ToastUtil.getInstance()._short(context, "您拒绝了存储权限，下载失败！");
+            } else {
+                //申请权限
+                ActivityCompat.requestPermissions(ImagePreviewActivity.this,
+                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,}, 1);
+            }
+        } else {
+            // 下载当前图片// todo Dialog
+            bt1ListView();
+        }
+    }
+
 
     /**
      * 底部列表弹窗
