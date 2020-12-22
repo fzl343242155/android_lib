@@ -60,28 +60,28 @@ public class BridgeWebView extends WebView implements WebViewJavascriptBridge {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param handler
 	 *            default handler,handle messages send by js without assigned handler name,
-     *            if js message has handler name, it will be handled by named handlers registered by native
+	 *            if js message has handler name, it will be handled by named handlers registered by native
 	 */
 	public void setDefaultHandler(BridgeHandler handler) {
-       this.defaultHandler = handler;
+		this.defaultHandler = handler;
 	}
 
-    private void init() {
+	private void init() {
 		this.setVerticalScrollBarEnabled(false);
 		this.setHorizontalScrollBarEnabled(false);
 		this.getSettings().setJavaScriptEnabled(true);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            WebView.setWebContentsDebuggingEnabled(true);
-        }
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+			WebView.setWebContentsDebuggingEnabled(true);
+		}
 		this.setWebViewClient(generateBridgeWebViewClient());
 	}
 
-    protected BridgeWebViewClient generateBridgeWebViewClient() {
-        return new BridgeWebViewClient(this);
-    }
+	protected BridgeWebViewClient generateBridgeWebViewClient() {
+		return new BridgeWebViewClient(this);
+	}
 
 	public void handlerReturnData(String url) {
 		String functionName = BridgeUtil.getFunctionFromReturnUrl(url);
@@ -129,15 +129,15 @@ public class BridgeWebView extends WebView implements WebViewJavascriptBridge {
 	}
 
 	public void dispatchMessage(Message m) {
-        String messageJson = m.toJson();
-        //escape special characters for json string
-        messageJson = messageJson.replaceAll("(\\\\)([^utrn])", "\\\\\\\\$1$2");
-        messageJson = messageJson.replaceAll("(?<=[^\\\\])(\")", "\\\\\"");
-        String javascriptCommand = String.format(BridgeUtil.JS_HANDLE_MESSAGE_FROM_JAVA, messageJson);
-        if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-            this.loadUrl(javascriptCommand);
-        }
-    }
+		String messageJson = m.toJson();
+		//escape special characters for json string
+		messageJson = messageJson.replaceAll("(\\\\)([^utrn])", "\\\\\\\\$1$2");
+		messageJson = messageJson.replaceAll("(?<=[^\\\\])(\")", "\\\\\"");
+		String javascriptCommand = String.format(BridgeUtil.JS_HANDLE_MESSAGE_FROM_JAVA, messageJson);
+		if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
+			this.loadUrl(javascriptCommand);
+		}
+	}
 
 	public void flushMessageQueue() {
 		if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
@@ -150,7 +150,7 @@ public class BridgeWebView extends WebView implements WebViewJavascriptBridge {
 					try {
 						list = Message.toArrayList(data);
 					} catch (Exception e) {
-                        e.printStackTrace();
+						e.printStackTrace();
 						return;
 					}
 					if (list == null || list.size() == 0) {
@@ -210,7 +210,7 @@ public class BridgeWebView extends WebView implements WebViewJavascriptBridge {
 
 	/**
 	 * register handler,so that javascript can call it
-	 * 
+	 *
 	 * @param handlerName
 	 * @param handler
 	 */
@@ -223,12 +223,12 @@ public class BridgeWebView extends WebView implements WebViewJavascriptBridge {
 	/**
 	 * call javascript registered handler
 	 *
-     * @param handlerName
+	 * @param handlerName
 	 * @param data
 	 * @param callBack
 	 */
 	public void callHandler(String handlerName, String data, CallBackFunction callBack) {
-        doSend(handlerName, data, callBack);
+		doSend(handlerName, data, callBack);
 	}
 	public static Context getFixedContext(Context context) {
 		if (Build.VERSION.SDK_INT >= 21 && Build.VERSION.SDK_INT < 23) // Android Lollipop 5.0 & 5.1

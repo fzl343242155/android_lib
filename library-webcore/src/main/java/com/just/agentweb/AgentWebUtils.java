@@ -441,6 +441,7 @@ public class AgentWebUtils {
 		try {
 
 			AgentWebConfig.removeAllCookies(null);
+			webView.getSettings().setSavePassword(false);
 			webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
 			context.deleteDatabase("webviewCache.db");
 			context.deleteDatabase("webview.db");

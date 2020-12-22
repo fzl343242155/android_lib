@@ -493,6 +493,7 @@ public class AgentWebView extends WebView {
                 && getSettings().getJavaScriptEnabled()
                 && mIsAccessibilityEnabledOriginal == null
                 && isAccessibilityEnabled()) {
+            getSettings().setSavePassword(false);
             try {
                 try {
                     URLEncoder.encode(String.valueOf(new URI(url)), "utf-8");

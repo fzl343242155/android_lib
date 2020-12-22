@@ -16,6 +16,8 @@
 
 package com.just.agentweb;
 
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.http.SslError;
 import android.os.Build;
@@ -206,11 +208,7 @@ public class WebViewClientDelegate extends WebViewClient {
     @Override
     public void onReceivedSslError(WebView view, SslErrorHandler handler,
                                    SslError error) {
-        if (mDelegate != null) {
-            mDelegate.onReceivedSslError(view, handler, error);
-            return;
-        }
-        super.onReceivedSslError(view, handler, error);
+        handler.cancel();
     }
 
     @Override

@@ -90,7 +90,7 @@ public abstract class AbsAgentWebSettings implements IAgentWebSettings, WebListe
 		// 是否阻塞加载网络图片  协议http or https
 		mWebSettings.setBlockNetworkImage(false);
 		// 允许加载本地文件html  file协议
-		mWebSettings.setAllowFileAccess(true);
+		mWebSettings.setAllowFileAccess(false);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
 			// 通过 file url 加载的 Javascript 读取其他的本地文件 .建议关闭
 			mWebSettings.setAllowFileAccessFromFileURLs(false);

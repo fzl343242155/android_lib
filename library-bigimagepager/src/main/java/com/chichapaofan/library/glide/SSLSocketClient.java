@@ -1,9 +1,17 @@
 package com.chichapaofan.library.glide;
 
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
+import java.security.SignatureException;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateExpiredException;
+import java.security.cert.CertificateNotYetValidException;
 import java.security.cert.X509Certificate;
 
 import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
@@ -38,6 +46,25 @@ public class SSLSocketClient {
 
                     @Override
                     public void checkServerTrusted(X509Certificate[] chain, String authType) {
+                        for (X509Certificate cert : chain) {
+// Make sure that it hasn't expired.
+                            try {
+                                cert.checkValidity();
+                            } catch (CertificateExpiredException e) {
+                                e.printStackTrace();
+                            } catch (CertificateNotYetValidException e) {
+                                e.printStackTrace();
+                            }
+// Verify the certificate's public key chain.
+                            try {
+                                cert.verify(cert.getPublicKey());
+                            } catch (NoSuchAlgorithmException e) {
+                            } catch (InvalidKeyException e) {
+                            } catch (NoSuchProviderException e) {
+                            } catch (SignatureException e) {
+                            } catch (CertificateException e) {
+                            }
+                        }
                     }
 
                     @Override
@@ -56,6 +83,25 @@ public class SSLSocketClient {
 
             @Override
             public void checkServerTrusted(X509Certificate[] chain, String authType) {
+                for (X509Certificate cert : chain) {
+// Make sure that it hasn't expired.
+                    try {
+                        cert.checkValidity();
+                    } catch (CertificateExpiredException e) {
+                        e.printStackTrace();
+                    } catch (CertificateNotYetValidException e) {
+                        e.printStackTrace();
+                    }
+// Verify the certificate's public key chain.
+                    try {
+                        cert.verify(cert.getPublicKey());
+                    } catch (NoSuchAlgorithmException e) {
+                    } catch (InvalidKeyException e) {
+                    } catch (NoSuchProviderException e) {
+                    } catch (SignatureException e) {
+                    } catch (CertificateException e) {
+                    }
+                }
             }
 
             @Override
@@ -68,8 +114,13 @@ public class SSLSocketClient {
     public static HostnameVerifier getHostnameVerifier() {
         return new HostnameVerifier() {
             @Override
-            public boolean verify(String s, SSLSession sslSession) {
-                return true;
+            public boolean verify(String hostname, SSLSession session) {
+                if("Demohostname".equals(hostname)){
+                    return true;
+                } else {
+                    HostnameVerifier hv = HttpsURLConnection.getDefaultHostnameVerifier();
+                    return hv.verify(hostname, session);
+                }
             }
         };
     }

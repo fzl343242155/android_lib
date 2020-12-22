@@ -121,6 +121,7 @@ public class WebParentLayout extends FrameLayout implements Provider<AbsAgentWeb
 					public void onClick(View v) {
 						if (getWebView() != null) {
 							clickView.setClickable(false);
+							getWebView().getSettings().setSavePassword(false);
 							if (AgentWebUtils.checkNetwork(getContext())) {
 								//根据cache-control获取数据。
 								getWebView().getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
