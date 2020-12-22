@@ -144,5 +144,6 @@
     <orderEntry type="library" name="Gradle: androidx.multidex:multidex:2.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: io.reactivex.rxjava2:rxandroid:2.0.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.download.library:Downloader:4.1.3@aar" level="project" />
+    <orderEntry type="library" name="Gradle: android-android-29" level="project" />
   </component>
 </module>
