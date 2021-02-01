@@ -1,4 +1,3 @@
-
 package com.github.mikephil.charting.components;
 
 import android.graphics.Color;
@@ -6,7 +5,7 @@ import android.graphics.DashPathEffect;
 import android.util.Log;
 
 import com.github.mikephil.charting.formatter.DefaultAxisValueFormatter;
-import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.Utils;
 
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ public abstract class AxisBase extends ComponentBase {
     /**
      * custom formatter that is used instead of the auto-formatter if set
      */
-    protected IAxisValueFormatter mAxisValueFormatter;
+    protected ValueFormatter mAxisValueFormatter;
 
     private int mGridColor = Color.GRAY;
 
@@ -519,7 +518,7 @@ public abstract class AxisBase extends ComponentBase {
         if (index < 0 || index >= mEntries.length)
             return "";
         else
-            return getValueFormatter().getFormattedValue(mEntries[index], this);
+            return getValueFormatter().getAxisLabel(mEntries[index], this);
     }
 
     /**
@@ -531,7 +530,7 @@ public abstract class AxisBase extends ComponentBase {
      *
      * @param f
      */
-    public void setValueFormatter(IAxisValueFormatter f) {
+    public void setValueFormatter(ValueFormatter f) {
 
         if (f == null)
             mAxisValueFormatter = new DefaultAxisValueFormatter(mDecimals);
@@ -544,7 +543,7 @@ public abstract class AxisBase extends ComponentBase {
      *
      * @return
      */
-    public IAxisValueFormatter getValueFormatter() {
+    public ValueFormatter getValueFormatter() {
 
         if (mAxisValueFormatter == null ||
                 (mAxisValueFormatter instanceof DefaultAxisValueFormatter &&
