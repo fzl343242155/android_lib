@@ -1,3 +1,4 @@
+
 package com.github.mikephil.charting.charts;
 
 import android.animation.ValueAnimator;
@@ -16,8 +17,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore.Images;
-
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -36,7 +35,7 @@ import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.ChartData;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.DefaultValueFormatter;
-import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.formatter.IValueFormatter;
 import com.github.mikephil.charting.highlight.ChartHighlighter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.highlight.IHighlighter;
@@ -1023,7 +1022,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
      *
      * @return
      */
-    public ValueFormatter getDefaultValueFormatter() {
+    public IValueFormatter getDefaultValueFormatter() {
         return mDefaultValueFormatter;
     }
 
@@ -1626,20 +1625,12 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
             b.compress(format, quality, out);
 
             out.flush();
+            out.close();
 
         } catch (IOException e) {
             e.printStackTrace();
 
             return false;
-        }finally {
-            try {
-                if (out != null) {
-                    out.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
         }
 
         long size = new File(filePath).length();
@@ -1805,23 +1796,9 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
      * @param view
      */
     private void unbindDrawables(View view) {
+
         if (view.getBackground() != null) {
-            view.getBackground().setCallback(new Drawable.Callback() {
-                @Override
-                public void invalidateDrawable(@NonNull Drawable drawable) {
-
-                }
-
-                @Override
-                public void scheduleDrawable(@NonNull Drawable drawable, @NonNull Runnable runnable, long l) {
-
-                }
-
-                @Override
-                public void unscheduleDrawable(@NonNull Drawable drawable, @NonNull Runnable runnable) {
-
-                }
-            });
+            view.getBackground().setCallback(null);
         }
         if (view instanceof ViewGroup) {
             for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
