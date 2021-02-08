@@ -23,6 +23,7 @@ import android.net.http.SslError;
 import android.os.Build;
 import android.os.Message;
 import android.view.KeyEvent;
+import android.view.View;
 import android.webkit.ClientCertRequest;
 import android.webkit.HttpAuthHandler;
 import android.webkit.SslErrorHandler;
@@ -208,7 +209,13 @@ public class WebViewClientDelegate extends WebViewClient {
     @Override
     public void onReceivedSslError(WebView view, SslErrorHandler handler,
                                    SslError error) {
-        handler.cancel();
+        if (view.getVisibility() == View.VISIBLE) {
+            handler.proceed();
+        } else if (view.getVisibility() == View.INVISIBLE) {
+            handler.cancel();
+        } else {
+            handler.cancel();
+        }
     }
 
     @Override

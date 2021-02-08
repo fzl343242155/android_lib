@@ -93,9 +93,9 @@ public abstract class AbsAgentWebSettings implements IAgentWebSettings, WebListe
 		mWebSettings.setAllowFileAccess(false);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
 			// 通过 file url 加载的 Javascript 读取其他的本地文件 .建议关闭
-			mWebSettings.setAllowFileAccessFromFileURLs(false);
+			mWebSettings.setAllowFileAccessFromFileURLs(true);
 			// 允许通过 file url 加载的 Javascript 可以访问其他的源，包括其他的文件和 http，https 等其他的源
-			mWebSettings.setAllowUniversalAccessFromFileURLs(false);
+			mWebSettings.setAllowUniversalAccessFromFileURLs(true);
 		}
 		mWebSettings.setJavaScriptCanOpenWindowsAutomatically(true);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
