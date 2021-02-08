@@ -91,6 +91,5 @@
     <orderEntry type="jdk" jdkName="Android API 28 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Gradle: me.jessyan:autosize:1.2.1@aar" level="project" />
-    <orderEntry type="library" name="Gradle: android-android-28" level="project" />
   </component>
 </module>

@@ -141,24 +141,5 @@
     <orderEntry type="module" module-name="library-mpchart" />
     <orderEntry type="module" module-name="library-security" />
     <orderEntry type="module" module-name="library-webcore" />
-    <orderEntry type="library" name="Gradle: android-android-29" level="project" />
-    <orderEntry type="module" module-name="library-bigimagepager" />
-    <orderEntry type="module" module-name="library-okhttputils" />
-    <orderEntry type="module" module-name="library-arouter" />
-    <orderEntry type="module" module-name="library-banner" />
-    <orderEntry type="module" module-name="library-channelview" />
-    <orderEntry type="module" module-name="library-jsbridge" />
-    <orderEntry type="module" module-name="library-mpchart" />
-    <orderEntry type="module" module-name="library-security" />
-    <orderEntry type="module" module-name="library-webcore" />
-    <orderEntry type="module" module-name="library-bigimagepager" />
-    <orderEntry type="module" module-name="library-okhttputils" />
-    <orderEntry type="module" module-name="library-arouter" />
-    <orderEntry type="module" module-name="library-banner" />
-    <orderEntry type="module" module-name="library-channelview" />
-    <orderEntry type="module" module-name="library-jsbridge" />
-    <orderEntry type="module" module-name="library-mpchart" />
-    <orderEntry type="module" module-name="library-security" />
-    <orderEntry type="module" module-name="library-webcore" />
   </component>
 </module>
