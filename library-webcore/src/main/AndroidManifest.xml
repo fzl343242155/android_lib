@@ -1,29 +1,27 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.just.agentweb"
-    >
+    package="com.just.agentweb">
 
     <application
-        android:allowBackup="true"
-        android:supportsRtl="true"
-        >
+        android:allowBackup="false"
+        android:supportsRtl="true">
 
         <provider
             android:name="com.just.agentweb.AgentWebFileProvider"
             android:authorities="${applicationId}.AgentWebFileProvider"
-            android:readPermission="content.permission.READ_CONTENT"
-            android:writePermission="content.permission.WRITE_CONTENT"
             android:exported="false"
-            android:grantUriPermissions="true">
+            android:grantUriPermissions="true"
+            android:readPermission="content.permission.READ_CONTENT"
+            android:writePermission="content.permission.WRITE_CONTENT">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/web_files_paths"/>
+                android:resource="@xml/web_files_paths" />
         </provider>
         <activity
             android:name="com.just.agentweb.ActionActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false"
-            android:permission="com.sgcc.pmos.mobileapp.permission.NORMAL"
             android:launchMode="standard"
+            android:permission="com.sgcc.pmos.mobileapp.permission.NORMAL"
             android:theme="@style/actionActivity"
             android:windowSoftInputMode="stateHidden|stateAlwaysHidden">
 
